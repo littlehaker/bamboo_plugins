@@ -10,8 +10,8 @@
 	
 	var paginator_htmlcontent = $('.paginator_htmlcontent', paginator_wrapper);
 	
-	var helper = function (url) {
-	  paginator_wrapper.parent().load(url);
+	var helper = function (query) {
+	  paginator_wrapper.parent().load('{{pageurl}}', query);
 	}
 
 	$('a', paginator_wrapper).click(function(){
@@ -26,27 +26,27 @@
 
 		<div class="pagination">
 		  <ul>
-			<li{% if thepage == 1 then %} class="disabled" {% end %}><a href="javascript:;" ref="{{pageurl}}?thepage={{prevpage}}&npp={{npp}}&totalpages={{totalpages}}">«</a></li>
+			<li{% if thepage == 1 then %} class="disabled" {% end %}><a href="javascript:;" ref="thepage={{prevpage}}&npp={{npp}}&totalpages={{totalpages}}">«</a></li>
 			{% pageShown = 10 %}
 			{% offset = 5 %}
 			{% if thepage>offset then %}
 			<li>
-			  <a href="javascript:;" ref="{{pageurl}}?thepage={{1}}&npp={{npp}}&totalpages={{totalpages}}">1...</a>
+			  <a href="javascript:;" ref="thepage={{1}}&npp={{npp}}&totalpages={{totalpages}}">1...</a>
 			</li>
 			{% end %}
 			{% for i=thepage-offset+1, thepage-offset+pageShown do %}
 			{% if i >= 1 and i <= totalpages then %}
 			<li{% if i == thepage then %} class="active" {% end %}>
-			  <a href="javascript:;" ref="{{pageurl}}?thepage={{i}}&npp={{npp}}&totalpages={{totalpages}}">{{i}}</a>
+			  <a href="javascript:;" ref="thepage={{i}}&npp={{npp}}&totalpages={{totalpages}}">{{i}}</a>
 			</li>
 			{% end %}
 			{% end %}
 			{% if thepage<totalpages-offset then %}
 			<li>
-			  <a href="javascript:;" ref="{{pageurl}}?thepage={{totalpages}}&npp={{npp}}&totalpages={{totalpages}}">...{{totalpages}}</a>
+			  <a href="javascript:;" ref="thepage={{totalpages}}&npp={{npp}}&totalpages={{totalpages}}">...{{totalpages}}</a>
 			</li>
 			{% end %}
-			<li{% if thepage == totalpages then %} class="disabled" {% end %}><a href="javascript:;" ref="{{pageurl}}?thepage={{nextpage}}&npp={{npp}}&totalpages={{totalpages}}">»</a></li>
+			<li{% if thepage == totalpages then %} class="disabled" {% end %}><a href="javascript:;" ref="thepage={{nextpage}}&npp={{npp}}&totalpages={{totalpages}}">»</a></li>
 		  </ul>
 		</div>
 </div>
