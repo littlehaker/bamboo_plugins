@@ -23,7 +23,7 @@
 
 <div class="paginator_wrapper" pageurl="{{pageurl}}" thepage="{{thepage}}" npp="{{npp}}" totalpages="{{totalpages}}">
 	<div class="paginator_htmlcontent"> {{htmlcontent}} </div>
-	{% if thepage ~= 0 then %}
+	{% if totalnum and totalnum > 0 then %}
 		<div class="pagination">
 		  <ul>
 			<li{% if thepage == 1 then %} class="disabled" {% end %}><a href="javascript:;" ref="thepage={{prevpage}}&npp={{npp}}&totalpages={{totalpages}}">«</a></li>

@@ -7,7 +7,7 @@ function helper()
 	
 	local thepage = tonumber(params.thepage) or 1
 	if thepage < 1 then thepage = 1 end
-	local totalpages = tonumber(params.totalpages) or 0 
+	local totalpages = tonumber(params.totalpages) or 1
 	if totalpages and thepage > totalpages then thepage = totalpages end
 	local npp = tonumber(params.npp) or tonumber(_args.npp) or 5
 	local starti = (thepage-1) * npp + 1
@@ -30,7 +30,10 @@ function helper()
 	-- print(thepage, nextpage, totalpages)
 	if nextpage > totalpages then nextpage = totalpages end
 
+	print(totalnum)
+	
 	return {
+		['totalnum'] = totalnum,
 		['htmlcontent'] = htmlcontent, 
 		['totalpages'] = totalpages, 
 		['npp'] = npp, 
