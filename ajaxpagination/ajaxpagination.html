@@ -14,7 +14,7 @@
 	  paginator_wrapper.parent().load('{{pageurl}}', query);
 	}
 
-	$('a', paginator_wrapper).click(function(){
+	$('.pagination a', paginator_wrapper).click(function(){
 	  var query = $(this).attr("ref");
 	  helper(query);
 	});
